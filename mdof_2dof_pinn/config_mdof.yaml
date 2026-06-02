@@ -1,0 +1,47 @@
+
+# config_mdof.yaml  —  Stage 1: Baseline (F2≠0 dual excitation)
+
+
+data:
+  csv_path: "Data/mdof_2dof_216runs_pinn.csv"
+  n_colloc_factor: 2.0
+
+training:
+  device: "cuda"
+  num_epochs: 3000
+  learning_rate: 1.0e-3
+  print_every: 500
+  seed_base: 1000
+
+loss:
+  w_data:  1.0
+  w_phys:  2.0
+  w_param: 0.0
+  w_modal: 0.1
+
+  # v,a data loss (disabled for Stage 1 baseline)
+  use_va_loss: false
+  w_v: 0.3
+  w_a: 1.0
+
+  perturb_level: 0.10
+
+paths:
+  results_root: "results/mdof_pinn/stage1"
+  runs_dir:     "results/mdof_pinn/stage1/runs"
+  logs_dir:     "results/mdof_pinn/stage1/logs"
+  summary_csv:  "results/mdof_pinn/stage1/identified_parameters.csv"
+  eval_dir:     "results/mdof_pinn/stage1/eval"
+  plots_dir:    "results/mdof_pinn/stage1/plots"
+
+
+# NOTES:
+#   Stage 1 = baseline sanity check with F2≠0 data
+#   - init = true ± 10% (light perturbation)
+#   - w_modal=0.1 allowed (semi-supervised)
+#   - w_param=0.0 (no direct param supervision)
+#   Stage 2 = fully blind (see config_stage2.yaml)
+#   - w_modal=0.0, w_param=0.0
+#   - perturb_level=0.10
+#   - warm-up + ramp + LBFGS
+

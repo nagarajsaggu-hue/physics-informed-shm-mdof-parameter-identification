@@ -1,0 +1,44 @@
+
+# 2DOF PINN Configuration - STAGE 2 (F2≠0 Dual Excitation)
+
+
+data:
+  csv_path: "Data/mdof_2dof_216runs_pinn.csv"
+  n_colloc_factor: 1.5
+
+training:
+  device: "cuda"  # or "cpu"
+  num_epochs: 3000
+  learning_rate: 1.0e-3
+  print_every: 200
+  seed_base: 123
+
+loss:
+  # Data loss weight
+  w_data: 1.0
+
+  # Physics loss weight
+  w_phys: 2.0
+
+  # Parameter supervision (DISABLED - no cheating)
+  w_param: 0.0
+
+  # Modal loss weight
+  w_modal: 0.0
+
+  # Optional: velocity and acceleration losses
+  use_va_loss: false  # Set true to enable v,a losses
+  w_v: 0.3  # Used if use_va_loss=true
+  w_a: 1.0  # Used if use_va_loss=true
+
+  # Initialization perturbation
+  perturb_level: 0.15  # ±15% perturbation from true values
+
+paths:
+  # Base results folder
+  results_root: "results/mdof_pinn"
+
+
+
+
+

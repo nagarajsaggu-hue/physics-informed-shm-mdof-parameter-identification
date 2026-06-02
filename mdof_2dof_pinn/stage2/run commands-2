@@ -1,0 +1,39 @@
+
+cd /mnt/c/Users/pavan/PycharmProjects/SHM_MDOF
+conda activate pinn_shm
+
+# 1. Train all Stage-2 runs
+python -m mdof_2dof_pinn.stage2.trainer_stage2 \
+  --config mdof_2dof_pinn/stage2/config_stage2.yaml \
+  --start 1 --end 5
+
+python -m mdof_2dof_pinn.stage2.trainer_stage2 --start 1 --end 1
+python -m mdof_2dof_pinn.stage2.trainer_stage2 --start 1 --end 5
+python -m mdof_2dof_pinn.stage2.trainer_stage2 --start 10 --end 20
+python -m mdof_2dof_pinn.stage2.trainer_stage2
+
+# 2. Evaluate identification accuracy
+python -m mdof_2dof_pinn.stage2.evaluate_stage2 --success-threshold 2.0
+
+python -m mdof_2dof_pinn.stage2.evaluate_stage2
+
+python -m mdof_2dof_pinn.stage2.evaluate_stage2 \
+  --csv results/stage2_blind/stage2_summary.csv
+
+# 3. Generate statistics
+python -m mdof_2dof_pinn.stage2.summarize_stage2_results
+python -m mdof_2dof_pinn.stage2.summarize_stage2_results \
+  --stage2-csv results/stage2_blind/stage2_summary.csv
+
+
+# 4. Create thesis plots
+python -m mdof_2dof_pinn.stage2.plot_stage2_results
+python -m mdof_2dof_pinn.stage2.plot_stage2_results --max_points_scatter 1000
+
+
+# 5. Compare Stage-1 vs Stage-2
+python -m mdof_2dof_pinn.stage2.compare_stage1_stage2 \
+  --stage1-csv results/mdof_pinn/runs/identified_parameters.csv
+
+# 6. Export thesis tables
+python -m mdof_2dof_pinn.stage2.export_stage2_tables

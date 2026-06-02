@@ -1,0 +1,45 @@
+
+cd /mnconda activate pinn_shm
+t/c/Users/pavan/PycharmProjects/SHM_MDOF
+
+
+# 1. Train all runs
+python -m mdof_2dof_pinn.run_all_runs
+
+python -m mdof_2dof_pinn.run_all_runs --start 1 --end 5 --force
+
+python -m mdof_2dof_pinn.run_all_runs --start 1 --end 5
+
+
+
+# 2. Evaluate
+python -m mdof_2dof_pinn.evaluate --config mdof_2dof_pinn/config_mdof.yaml
+
+python -m mdof_2dof_pinn.evaluate \
+  --config mdof_2dof_pinn/config_mdof.yaml \
+  --run-id 1
+
+python -m mdof_2dof_pinn.evaluate \
+  --config mdof_2dof_pinn/config_mdof.yaml \
+  --start 1 --end 5
+
+
+
+# 3. Summarize statistics
+python -m mdof_2dof_pinn.summarize_results --config mdof_2dof_pinn/config_mdof.yaml
+
+
+
+# 4. Generate plots
+python -m mdof_2dof_pinn.plot_results --config mdof_2dof_pinn/config_mdof.yaml
+
+python -m mdof_2dof_pinn.plot_results \
+  --config mdof_2dof_pinn/config_mdof.yaml \
+  --run-id 1
+
+python -m mdof_2dof_pinn.plot_results \
+  --config mdof_2dof_pinn/config_mdof.yaml \
+  --start 1 --end 5
+
+
+python -m mdof_2dof_pinn.plot_results --config mdof_2dof_pinn/config_mdof.yaml --summary-only
