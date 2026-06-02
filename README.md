@@ -1,4 +1,8 @@
+<p align="center">
+  <img src="shm.png" alt="Physics-Informed SHM - MDOF Parameter Identification with PINNs" width="100%">
+</p>
 
+<br>
 #  SHM_MDOF: Structural Health Monitoring using AI
 
 Welcome to the **SHM_MDOF** project! 
