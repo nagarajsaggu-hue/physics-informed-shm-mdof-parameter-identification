@@ -1,6 +1,6 @@
 
 cd /mnconda activate pinn_shm
-t/c/Users/pavan/PycharmProjects/SHM_MDOF
+t/c/Users/PycharmProjects/SHM_MDOF
 
 
 # 1. Train all runs
