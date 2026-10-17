@@ -52,7 +52,7 @@ Before running any code, you need to open your terminal and activate the project
 1. Open your **WSL (Ubuntu) terminal**.
 2. Go to the project folder by typing:
    ```bash
-   cd /mnt/c/Users/pavan/PycharmProjects/SHM_MDOF
+   cd /mnt/c/Users/PycharmProjects/SHM_MDOF
    
 ---
 
