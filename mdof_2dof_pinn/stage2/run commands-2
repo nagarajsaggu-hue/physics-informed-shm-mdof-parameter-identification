@@ -1,5 +1,5 @@
 
-cd /mnt/c/Users/pavan/PycharmProjects/SHM_MDOF
+cd /mnt/c/Users/PycharmProjects/SHM_MDOF
 conda activate pinn_shm
 
 # 1. Train all Stage-2 runs
